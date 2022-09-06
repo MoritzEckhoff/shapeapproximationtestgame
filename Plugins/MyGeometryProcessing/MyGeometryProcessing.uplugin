@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "MyGeometryProcessing",
+	"Description": "New Geometry Processing",
+	"Category": "Other",
+	"CreatedBy": "Moritz",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "MyGeometryAlgorithms",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "MyDynamicMesh",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

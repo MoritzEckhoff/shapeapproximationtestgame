@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\biolab-top1\\documents\\unreal projects\\simplefpstemplate-master\\plugins\\mygeometryprocessing\\source\\mygeometryprocessing\\private\\mygeometryprocessing.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\biolab-top1\\documents\\unreal projects\\simplefpstemplate-master\\intermediate\\build\\win64\\fpsgameeditor\\development\\engine\\sharedpch.engine.h.pch",
+        "Includes": [
+            "c:\\users\\biolab-top1\\documents\\unreal projects\\simplefpstemplate-master\\plugins\\mygeometryprocessing\\intermediate\\build\\win64\\unrealeditor\\development\\mygeometryprocessing\\definitions.mygeometryprocessing.h",
+            "c:\\users\\biolab-top1\\documents\\unreal projects\\simplefpstemplate-master\\plugins\\mygeometryprocessing\\source\\mygeometryprocessing\\public\\mygeometryprocessing.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

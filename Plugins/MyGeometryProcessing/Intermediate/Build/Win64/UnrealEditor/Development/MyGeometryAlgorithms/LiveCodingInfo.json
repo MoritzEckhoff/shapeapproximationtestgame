@@ -1,0 +1,35 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.MyGeometryAlgorithms.cpp.obj": [
+			"Arrangement2d.cpp.obj",
+			"ConstrainedDelaunay2.cpp.obj",
+			"DistLine3Circle3.cpp.obj",
+			"FitCapsule3.cpp.obj",
+			"GeometryAlgorithmsModule.cpp.obj",
+			"MinVolumeBox3.cpp.obj",
+			"MinVolumeSphere3.cpp.obj",
+			"GTEnginePCH.cpp.obj",
+			"GteLogger.cpp.obj",
+			"GteLogReporter.cpp.obj",
+			"GteLogToFile.cpp.obj",
+			"GteLogToStdout.cpp.obj",
+			"GteLogToStringArray.cpp.obj",
+			"GteTimer.cpp.obj",
+			"GteWrapper.cpp.obj",
+			"GteBitHacks.cpp.obj",
+			"GteBSPrecision.cpp.obj",
+			"GteETManifoldMesh.cpp.obj",
+			"GteETNonmanifoldMesh.cpp.obj",
+			"GteIEEEBinary16.cpp.obj",
+			"GteTetrahedronKey.cpp.obj",
+			"GteTSManifoldMesh.cpp.obj",
+			"GteUIntegerAP32.cpp.obj",
+			"GteVEManifoldMesh.cpp.obj",
+			"GteVETManifoldMesh.cpp.obj",
+			"GteVETNonmanifoldMesh.cpp.obj",
+			"xatlas.cpp.obj",
+			"XAtlasWrapper.cpp.obj"
+		]
+	}
+}
