@@ -1,0 +1,15 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-MyDynamicMesh.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.1_of_4.cpp.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.3_of_4.cpp.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.4_of_4.cpp.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Default.rc2.res"
+/OUT:"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\UnrealEditor-MyDynamicMesh.lib"

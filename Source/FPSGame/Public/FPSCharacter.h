@@ -67,6 +67,9 @@ protected:
 	/** Fires a projectile. */
 	void Fire();
 
+	/** Hides Rifle and Hands */
+	void HideRifle();
+
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 

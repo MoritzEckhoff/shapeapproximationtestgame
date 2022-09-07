@@ -31,6 +31,7 @@ public:
 	void AddMesh(const UE::Geometry::FDynamicMesh3& AddMesh);
 	void Approximate();
 	void DrawPrimitives();
+	bool Verbose;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -67,6 +68,9 @@ protected:
 	
 	UPROPERTY()
 	UStaticMeshComponent* Root;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Default)
+	UMaterialInterface* MaterialInterface;
 
 	
 

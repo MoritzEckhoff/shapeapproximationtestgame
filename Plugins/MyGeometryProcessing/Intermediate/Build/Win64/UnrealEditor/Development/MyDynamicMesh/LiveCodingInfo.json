@@ -86,7 +86,6 @@
 		],
 		"Module.MyDynamicMesh.4_of_4.cpp.obj": [
 			"MeshVertexSelection.cpp.obj",
-			"MeshSimpleShapeApproximation.cpp.obj",
 			"ShapeDetection3.cpp.obj",
 			"SimpleShapeSet3.cpp.obj",
 			"ConstrainedMeshDeformer.cpp.obj",
@@ -101,7 +100,8 @@
 			"MeshLaplacian.cpp.obj",
 			"MeshParameterizationSolvers.cpp.obj",
 			"MeshSmoothing.cpp.obj",
-			"PrecomputedMeshWeightData.cpp.obj"
+			"PrecomputedMeshWeightData.cpp.obj",
+			"MeshSimpleShapeApproximation.cpp.obj"
 		]
 	}
 }

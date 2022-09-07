@@ -2,6 +2,7 @@
 
 #include "FPSCharacter.h"
 #include "FPSProjectile.h"
+#include "FPSHUD.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -38,6 +39,8 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
+	PlayerInputComponent->BindAction("HideRifle", IE_Pressed, this, &AFPSCharacter::HideRifle);
+
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFPSCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFPSCharacter::MoveRight);
@@ -76,6 +79,28 @@ void AFPSCharacter::OnJumped_Implementation()
 			PC->PlayerCameraManager->StartCameraShake(JumpCameraShake);
 		}
 		//UGameplayStatics::PlaySound2D(this, JumpedSound);
+	}
+}
+
+void AFPSCharacter::HideRifle()
+{
+	/*TSet<UActorComponent*> Comps = this->GetComponents();
+	for (int32 i = 0; i < Comps.Num(); i++)
+	{
+		Comps[i]->visibi
+	}*/
+	AFPSHUD* HUD = Cast<AFPSHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+
+	if (this->IsHidden())
+	{
+		SetActorHiddenInGame(false);
+		HUD->bShowHUD = true;
+
+	}
+	else
+	{
+		SetActorHiddenInGame(true);
+		HUD->bShowHUD = false;
 	}
 }
 

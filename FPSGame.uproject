@@ -17,6 +17,10 @@
 		{
 			"Name": "MyGeometryProcessing",
 			"Enabled": true
+		},
+		{
+			"Name": "StaticMeshEditorModeling",
+			"Enabled": true
 		}
 	]
 }

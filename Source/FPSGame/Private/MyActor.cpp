@@ -29,6 +29,17 @@ AMyActor::AMyActor()
 	IsInitialized = false;
 	IsApproximated = false;
 
+	Verbose = false;
+
+	static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("Material'/Game/Environment/Materials/M_Cube.M_Cube'"));
+	if (Material.Object != NULL)
+	{
+		MaterialInterface = (UMaterialInterface*)Material.Object;
+	}
+	else
+	{
+		MaterialInterface = nullptr;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -60,7 +71,10 @@ void AMyActor::Initialize(const TArray<UE::Geometry::FDynamicMesh3>& InitDynMesh
 		UpdatePtrArray();
 		IsInitialized = true;
 		IsApproximated = false;
-		//PrintDynMeshProperties(InitDynMesh);
+		if (Verbose)
+		{
+			PrintDynMeshProperties(InitDynMesh);
+		}
 	}
 	else {
 		FString UniversalString = "Both input arrays of AMyActor::Initialize() need to be of the same length";
@@ -95,9 +109,9 @@ void AMyActor::Approximate()
 {
 	if (IsInitialized)
 	{
-		ShapeApprox->bDetectBoxes = false;
-		ShapeApprox->bDetectCapsules = false;
-		ShapeApprox->bDetectSpheres = false;
+		ShapeApprox->bDetectBoxes = true;
+		ShapeApprox->bDetectCapsules = true;
+		ShapeApprox->bDetectSpheres = true;
 		ShapeApprox->bDetectConvexes = false;
 		ShapeApprox->InitializeSourceMeshes(*DynamicSourceMeshesPtrArr);
 		ShapeApprox->Generate_MinCostApproximation(*ShapePrimitiveSet);
@@ -122,16 +136,19 @@ void AMyActor::DrawPrimitives()
 {
 	if (IsApproximated)
 	{		
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveBoxes = " + FString::FromInt(ShapePrimitiveSet->Boxes.Num()));
+		if (Verbose)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveBoxes = " + FString::FromInt(ShapePrimitiveSet->Boxes.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveCapsules = " + FString::FromInt(ShapePrimitiveSet->Capsules.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveSpheres = " + FString::FromInt(ShapePrimitiveSet->Spheres.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveConvexes = " + FString::FromInt(ShapePrimitiveSet->Convexes.Num()));
+		}
 		DrawBoxes();
 		
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveCapsules = " + FString::FromInt(ShapePrimitiveSet->Capsules.Num()));
 		DrawCapsules();
 
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveSpheres = " + FString::FromInt(ShapePrimitiveSet->Spheres.Num()));
 		DrawSpheres();
 
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "NumPrimitiveConvexes = " + FString::FromInt(ShapePrimitiveSet->Convexes.Num()));
 		DrawConvexes();
 	}
 }
@@ -173,11 +190,10 @@ void AMyActor::PrintDynMeshProperties(const TArray<UE::Geometry::FDynamicMesh3>&
 void AMyActor::DrawInitializedDynMesh()
 {
 	FTransform RelativeTransform(FRotator::ZeroRotator, FVector3d::ZeroVector, FVector3d::OneVector);
-	DrawDebugCoordinateSystem(GetWorld(), this->GetActorLocation(), this->GetActorRotation(), 200.0f,true,10.0f,(uint8)0U,5.0f);
+	
 	for (int32 i = 0; i < DynamicSourceMeshesObjArr.Num(); i++)
 	{
 		MakeStaticMeshActorFromDynamicMesh(FName(GetName() + FString("DynamicMesh") + FString::FromInt(i)), &DynamicSourceMeshesObjArr[i], RelativeTransform);
-		
 	}
 }
 
@@ -206,11 +222,18 @@ AStaticMeshActor* AMyActor::MakeStaticMeshActorFromDynamicMesh(const FName Name,
 
 	TArray<const FMeshDescription*> NewMeshDescriptionPtrs;
 	NewMeshDescriptionPtrs.Emplace(&NewMeshDescription);
-	NewStaticMesh->BuildFromMeshDescriptions(NewMeshDescriptionPtrs);
-
+	NewStaticMesh->BuildFromMeshDescriptions(NewMeshDescriptionPtrs);	
+	
 	NewMeshActor->GetStaticMeshComponent()->SetStaticMesh(NewStaticMesh);
+	
+	//MaterialInterface = UMaterial::GetDefaultMaterial(MD_Surface);
+	NewMeshActor->GetStaticMeshComponent()->SetMaterial(0, UMaterialInstanceDynamic::Create(MaterialInterface, NewMeshActor->GetStaticMeshComponent() ));
+	
 
-	DrawDebugCoordinateSystem(GetWorld(), Transform.GetLocation(), Transform.Rotator(), 200.0f, true, 10.0f, (uint8)0U, 5.0f);
+	if (Verbose)
+	{
+		DrawDebugCoordinateSystem(GetWorld(), this->GetActorLocation(), this->GetActorRotation(), 200.0f, true, 10.0f, (uint8)0U, 5.0f);
+	}
 
 	return NewMeshActor;
 }

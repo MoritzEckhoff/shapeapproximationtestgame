@@ -33,9 +33,9 @@
 /NODEFAULTLIB:"LIBCD"
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
-"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h.obj"
-"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\Module.MyGeometryAlgorithms.cpp.obj"
-"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\Default.rc2.res"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\Module.MyGeometryAlgorithms.cpp.obj"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\Default.rc2.res"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Core\UnrealEditor-Core.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\GeometryCore\UnrealEditor-GeometryCore.lib"
 "delayimp.lib"
@@ -62,7 +62,7 @@
 "setupapi.lib"
 "dwmapi.lib"
 "imm32.lib"
-/OUT:"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Binaries\Win64\UnrealEditor-MyGeometryAlgorithms.dll"
-/IMPLIB:"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\UnrealEditor-MyGeometryAlgorithms.suppressed.lib"
-/PDB:"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Binaries\Win64\UnrealEditor-MyGeometryAlgorithms.pdb"
+/OUT:"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Binaries\Win64\UnrealEditor-MyGeometryAlgorithms.dll"
+/IMPLIB:"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyGeometryAlgorithms\UnrealEditor-MyGeometryAlgorithms.suppressed.lib"
+/PDB:"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Binaries\Win64\UnrealEditor-MyGeometryAlgorithms.pdb"
 /ignore:4078

@@ -1,19 +1,19 @@
-"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp"
+"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp"
 /I .
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Private"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Private"
 /I ThirdParty
 /I ThirdParty\Eigen
 /I ThirdParty\Eigen\Eigen
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Operations"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Parameterization"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Polygroups"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Sampling"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Selections"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\ShapeApproximation"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Solvers"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Operations"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Parameterization"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Polygroups"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Sampling"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Selections"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\ShapeApproximation"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyDynamicMesh\Public\Solvers"
 /I Runtime
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
@@ -88,9 +88,9 @@
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\AnimationCore
 /I Runtime\AnimationCore\Public
 /I Runtime\AnimationCore
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms\Public"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms"
-/I "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms\Public\Distance"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms\Public"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms"
+/I "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Source\MyGeometryAlgorithms\Public\Distance"
 /I ThirdParty\mimalloc\include
 /I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE"
 /I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"
@@ -98,12 +98,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"
-/FI"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h"
-/FI"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Definitions.MyDynamicMesh.h"
-/Yu"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h"
-/Fp"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h.pch"
-/Fo"C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp.obj"
-/sourceDependencies "C:\Users\BioLab-top1\Documents\Unreal Projects\SimpleFPSTemplate-master\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp.json"
+/FI"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h"
+/FI"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Definitions.MyDynamicMesh.h"
+/Yu"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h"
+/Fp"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Intermediate\Build\Win64\FPSGameEditor\Development\Core\SharedPCH.Core.h.pch"
+/Fo"C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp.obj"
+/sourceDependencies "C:\Users\BioLab-top1\Documents\Unreal Projects\shapeapproximationtestgame\Plugins\MyGeometryProcessing\Intermediate\Build\Win64\UnrealEditor\Development\MyDynamicMesh\Module.MyDynamicMesh.2_of_4.cpp.json"
 /Zc:inline
 /nologo
 /Oi

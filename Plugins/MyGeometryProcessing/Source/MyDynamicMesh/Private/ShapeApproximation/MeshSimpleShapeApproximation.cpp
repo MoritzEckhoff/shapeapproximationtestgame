@@ -373,58 +373,119 @@ void FMeshSimpleShapeApproximation::Generate_ProjectedHulls(FSimpleShapeSet3d& S
 }
 
 
+double SignedVolumeOfTriangle(FVector3d p1, FVector3d p2, FVector3d p3) {
+	// According to http://chenlab.ece.cornell.edu/Publication/Cha/icip01_Cha.pdf
+	double v321 = p3.X * p2.Y * p1.Z;
+	double v231 = p2.X * p3.Y * p1.Z;
+	double v312 = p3.X * p1.Y * p2.Z;
+	double v132 = p1.X * p3.Y * p2.Z;
+	double v213 = p2.X * p1.Y * p3.Z;
+	double v123 = p1.X * p2.Y * p3.Z;
+	return (1.0f / 6.0f) * (-v321 + v231 + v312 - v132 - v213 + v123);
+}
+
+double VolumeOfMesh(const FDynamicMesh3& mesh) {
+	FIndex3i TriangleVertexIDs;
+	double Volume = 0;
+	for (int32 i = 0; i < mesh.TriangleCount(); i++)
+	{
+		TriangleVertexIDs = mesh.GetTriangle(i);
+		Volume += SignedVolumeOfTriangle(mesh.GetVertex(TriangleVertexIDs.A), mesh.GetVertex(TriangleVertexIDs.B), mesh.GetVertex(TriangleVertexIDs.C));
+	}
+	return std::abs(Volume);
+}
+
+
+
+
 void FMeshSimpleShapeApproximation::Generate_MinCostApproximation(FSimpleShapeSet3d& ShapeSetOut)
 {
 	FCriticalSection GeometryLock;
 	ParallelFor(SourceMeshes.Num(), [&](int32 idx)
 	{
-		if (GetDetectedSimpleShape(SourceMeshCaches[idx], ShapeSetOut, GeometryLock))
-		{
-			return;
-		}
-
+		const FSourceMeshCache& Cache = SourceMeshCaches[idx];
 		const FDynamicMesh3& SourceMesh = *SourceMeshes[idx];
+		double OriginalVolume = VolumeOfMesh(SourceMesh);
+		
+
+		FSimpleShapeFitsResult FitResult;
+		bool ApproximateSphere = (Cache.DetectedType == EDetectedSimpleShapeType::Sphere && bDetectSpheres) ? false : true;
+		bool ApproximateCapsule = (Cache.DetectedType == EDetectedSimpleShapeType::Capsule && bDetectCapsules) ? false : true;
+		bool ApproximateOrientedBox = (Cache.DetectedType == EDetectedSimpleShapeType::Box && bDetectBoxes) ? false : true;
+
+		ComputeSimpleShapeFits(SourceMesh, ApproximateSphere, ApproximateOrientedBox, ApproximateCapsule, false, bUseExactComputationForBox, FitResult);
+
+		if (Cache.DetectedType == EDetectedSimpleShapeType::Sphere && bDetectSpheres)
+		{
+			FitResult.Sphere = Cache.DetectedSphere;
+			FitResult.bHaveSphere = true;
+		}
+		if (Cache.DetectedType == EDetectedSimpleShapeType::Capsule && bDetectCapsules)
+		{
+			FitResult.Capsule = Cache.DetectedCapsule;
+			FitResult.bHaveCapsule = true;
+		}
+		if (Cache.DetectedType == EDetectedSimpleShapeType::Box && bDetectBoxes)
+		{
+			FitResult.Box = Cache.DetectedBox;
+			FitResult.bHaveBox = true;
+		}
 
 		FOrientedBox3d AlignedBox = FOrientedBox3d(SourceMesh.GetBounds());
 
-		FSimpleShapeFitsResult FitResult;
-		ComputeSimpleShapeFits(SourceMesh, true, true, true, false, bUseExactComputationForBox, FitResult);
 
 		double Volumes[4];
 		Volumes[0] = AlignedBox.Volume();
-		Volumes[1] = (FitResult.bHaveBox) ? FitResult.Box.Volume() : TNumericLimits<double>::Max();
-		Volumes[2] = (FitResult.bHaveSphere) ? FitResult.Sphere.Volume() : TNumericLimits<double>::Max();
-		Volumes[3] = (FitResult.bHaveCapsule) ? FitResult.Capsule.Volume() : TNumericLimits<double>::Max();
+		Volumes[1] = (FitResult.bHaveSphere) ? FitResult.Sphere.Volume() : TNumericLimits<double>::Max();
+		Volumes[2] = (FitResult.bHaveCapsule) ? FitResult.Capsule.Volume() : TNumericLimits<double>::Max();
+		Volumes[3] = (FitResult.bHaveBox) ? FitResult.Box.Volume() : TNumericLimits<double>::Max();
 
-		int32 MinVolIndex = 0;
+
 		for (int32 k = 1; k < 4; ++k)
 		{
-			if (Volumes[k] < Volumes[MinVolIndex])
+			if (Volumes[k]  < OriginalVolume*0.98)
 			{
-				MinVolIndex = k;
+				Volumes[k] = TNumericLimits<double>::Max();
 			}
 		}
 
-		if (Volumes[MinVolIndex] < TNumericLimits<double>::Max())
+		double Cost[4];
+		Cost[0] = (Volumes[0] < TNumericLimits<double>::Max()) ? std::abs(Volumes[0] - OriginalVolume) * 2.0f : TNumericLimits<double>::Max();
+		Cost[1] = (Volumes[1] < TNumericLimits<double>::Max()) ? std::abs(Volumes[1] - OriginalVolume) * 0.9f : TNumericLimits<double>::Max();
+		Cost[2] = (Volumes[2] < TNumericLimits<double>::Max()) ? std::abs(Volumes[2] - OriginalVolume) * 1.0f : TNumericLimits<double>::Max();
+		Cost[3] = (Volumes[3] < TNumericLimits<double>::Max()) ? std::abs(Volumes[3] - OriginalVolume) * 3.0f : TNumericLimits<double>::Max();
+
+		int32 MinCostIndex = 0;
+		for (int32 k = 1; k < 4; ++k)
+		{
+			if (Cost[k] < Cost[MinCostIndex])
+			{
+				MinCostIndex = k;
+			}
+		}
+
+		if (Cost[MinCostIndex] < TNumericLimits<double>::Max())
 		{
 			GeometryLock.Lock();
-			switch (MinVolIndex)
+			switch (MinCostIndex)
 			{
 			case 0:
 				ShapeSetOut.Boxes.Add(FBoxShape3d(AlignedBox));
 				break;
 			case 1:
-				ShapeSetOut.Boxes.Add(FBoxShape3d(FitResult.Box));
-				break;
-			case 2:
 				ShapeSetOut.Spheres.Add(FSphereShape3d(FitResult.Sphere));
 				break;
-			case 3:
+			case 2:
 				ShapeSetOut.Capsules.Add(UE::Geometry::FCapsuleShape3d(FitResult.Capsule));
+				break;
+			case 3:
+				ShapeSetOut.Boxes.Add(FBoxShape3d(FitResult.Box));
 				break;
 			}
 			GeometryLock.Unlock();
 		}
+
+		UE_LOG(LogTemp, Warning, TEXT("Shape Approximation: OriginalVolume = %lf ;ApproximatedVolume = %lf"), OriginalVolume, Volumes[MinCostIndex]);
 	});
 }
 
