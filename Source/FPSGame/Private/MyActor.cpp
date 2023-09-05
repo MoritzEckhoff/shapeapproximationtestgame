@@ -3,6 +3,7 @@
 
 #include "MyActor.h"
 #include "TimerManager.h"
+#include <fstream>
 //#include <BoxSphereGenerator.h>
 
 // Sets default values
@@ -30,6 +31,8 @@ AMyActor::AMyActor()
 	IsApproximated = false;
 
 	Verbose = false;
+
+
 
 	static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("Material'/Game/Environment/Materials/M_Cube.M_Cube'"));
 	if (Material.Object != NULL)
@@ -187,6 +190,59 @@ void AMyActor::PrintDynMeshProperties(const TArray<UE::Geometry::FDynamicMesh3>&
 	}
 }
 
+void AMyActor::PrintApproximatedSizes(const int32& index, const UE::Geometry::EDetectedSimpleShapeType Type, FString OutputStr)
+{
+	FColor Color = FColor::Blue;
+	FVector Corner0;
+
+	switch (Type)
+	{
+	case UE::Geometry::EDetectedSimpleShapeType::Sphere:
+		OutputStr.Append("App. is Sphere: Radius = ");
+		OutputStr.Append(FString::SanitizeFloat(ShapePrimitiveSet->Spheres[index].Sphere.Radius));
+		OutputStr.Append("  Center = ");
+		OutputStr.Append(ShapePrimitiveSet->Spheres[index].Sphere.Center.ToString());
+		break;
+	case UE::Geometry::EDetectedSimpleShapeType::Capsule:
+		OutputStr.Append("App. is Capsule: Radius = ");
+		OutputStr.Append(FString::SanitizeFloat(ShapePrimitiveSet->Capsules[index].Capsule.Radius));
+		OutputStr.Append("  Length = ");
+		OutputStr.Append(FString::SanitizeFloat(ShapePrimitiveSet->Capsules[index].Capsule.Length()));
+		OutputStr.Append("  Center = ");
+		OutputStr.Append(ShapePrimitiveSet->Capsules[index].Capsule.Center().ToString());
+		break;
+	case UE::Geometry::EDetectedSimpleShapeType::Box:
+		Corner0 = ShapePrimitiveSet->Boxes[index].Box.GetCorner(0);
+		OutputStr.Append("App. is Box: AxisX = ");
+		OutputStr.Append((ShapePrimitiveSet->Boxes[index].Box.GetCorner(1)-Corner0).ToString());
+		OutputStr.Append("  AxisY = ");
+		OutputStr.Append((ShapePrimitiveSet->Boxes[index].Box.GetCorner(3)-Corner0).ToString());
+		OutputStr.Append("  AxisZ = ");
+		OutputStr.Append((ShapePrimitiveSet->Boxes[index].Box.GetCorner(4) - Corner0).ToString());
+		OutputStr.Append("  Center = ");
+		OutputStr.Append(ShapePrimitiveSet->Boxes[index].Box.Center().ToString());
+		break;
+	default:
+		Color = FColor::Red;
+		OutputStr = "PrintApproximatedSizes failed";
+		break;
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, Color, OutputStr);
+	std::ofstream File;
+	FString Filename = FPaths::GameSourceDir() + "Primitives.txt";
+	File.open(TCHAR_TO_UTF8(*Filename), std::ios_base::app);
+	if (File.is_open())
+	{
+		File << TCHAR_TO_UTF8(*OutputStr);
+		File << std::endl;
+		File.close();
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "PrintApproximatedSizes: Writing into File failed");
+	}
+}
+
 void AMyActor::DrawInitializedDynMesh()
 {
 	FTransform RelativeTransform(FRotator::ZeroRotator, FVector3d::ZeroVector, FVector3d::OneVector);
@@ -249,6 +305,8 @@ void AMyActor::DrawBoxes()
 		UE::Geometry::FDynamicMesh3 DynamicPrimitive(&Generator.Generate());
 		FTransform RelativeTransform = FTransform::Identity;
 		MakeStaticMeshActorFromDynamicMesh(FName(GetName() + FString("PrimitiveBox") + FString::FromInt(i)), &DynamicPrimitive, RelativeTransform);
+	
+		PrintApproximatedSizes(i, UE::Geometry::EDetectedSimpleShapeType::Box);
 	}
 }
 
@@ -275,7 +333,9 @@ void AMyActor::DrawCapsules()
 		FTransform RelativeTransform(Rot, ShapePrimitiveSet->Capsules[i].Capsule.Center(), FVector3d::OneVector);
 
 		MakeStaticMeshActorFromDynamicMesh(FName(GetName() + FString("PrimitiveCapsule") + FString::FromInt(i)), &DynamicPrimitive,RelativeTransform);
-		}
+		
+		PrintApproximatedSizes(i, UE::Geometry::EDetectedSimpleShapeType::Capsule);
+	}
 }
 
 void AMyActor::DrawSpheres()
@@ -289,6 +349,8 @@ void AMyActor::DrawSpheres()
 		UE::Geometry::FDynamicMesh3 DynamicPrimitive(&Generator.Generate());
 		FTransform RelativeTransform(FRotator::ZeroRotator, ShapePrimitiveSet->Spheres[i].Sphere.Center, FVector3d::OneVector);
 		MakeStaticMeshActorFromDynamicMesh(FName(GetName() + FString("PrimitiveSphere") + FString::FromInt(i)), &DynamicPrimitive, RelativeTransform);
+	
+		PrintApproximatedSizes(i, UE::Geometry::EDetectedSimpleShapeType::Sphere);
 	}
 }
 

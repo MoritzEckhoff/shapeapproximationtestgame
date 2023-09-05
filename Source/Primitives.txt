@@ -1,0 +1,7 @@
+
+
+App. is Box: AxisX = X=120.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=75.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=60.000  Center = X=0.000 Y=6.100 Z=7.400
+App. is Box: AxisX = X=-0.000 Y=130.352 Z=12.401  AxisY = X=120.000 Y=0.000 Z=0.000  AxisZ = X=0.000 Y=2.882 Z=-30.295  Center = X=2.058 Y=64.908 Z=3.526
+App. is Capsule: Radius = 42.786823  Length = 116.999215  Center = X=1.959 Y=-25.695 Z=-0.886
+App. is Box: AxisX = X=1170.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=500.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=0.000  Center = X=0.000 Y=0.000 Z=0.000
+App. is Box: AxisX = X=1170.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=500.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=0.000  Center = X=0.000 Y=0.000 Z=0.000

@@ -1,0 +1,15 @@
+Ok. App. is Box: AxisX = X=0.000 Y=-75.000 Z=0.000  AxisY = X=-120.000 Y=-0.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=-60.000  Center = X=23.439 Y=19.110 Z=-1.077
+App. is Capsule: Radius = 11.160401  Length = 27.455498  Center = X=0.001 Y=0.012 Z=14.315
+Ok. App. is Box: AxisX = X=114.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=46.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=39.500  Center = X=0.000 Y=-6.327 Z=-8.704
+Ok. App. is Box: AxisX = X=-112.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=-66.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=56.600  Center = X=-0.000 Y=12.058 Z=-23.357
+ok. App. is Box: AxisX = X=120.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=75.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=60.000  Center = X=0.000 Y=6.100 Z=7.400
+Ok. App. is Box: AxisX = X=19.469 Y=0.000 Z=0.000  AxisY = X=0.000 Y=0.000 Z=37.450  AxisZ = X=0.000 Y=-28.712 Z=0.000  Center = X=-3.791 Y=4.163 Z=21.217
+Ok. App. is Box: AxisX = X=-0.000 Y=130.352 Z=12.401  AxisY = X=120.000 Y=0.000 Z=0.000  AxisZ = X=0.000 Y=2.882 Z=-30.295  Center = X=2.058 Y=64.908 Z=3.526
+App. is Capsule: Radius = 42.786823  Length = 116.999215  Center = X=1.942 Y=-25.690 Z=-0.786
+Ok. App. is Box: AxisX = X=58.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=0.000 Z=-56.600  AxisZ = X=0.000 Y=66.000 Z=0.000  Center = X=0.000 Y=-22.393 Z=-2.102
+Ok. App. is Box: AxisX = X=58.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=-66.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=-56.600  Center = X=0.001 Y=-19.771 Z=-5.760
+Ok. App. is Box: AxisX = X=120.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=75.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=60.000  Center = X=-0.000 Y=4.214 Z=9.143
+App. is Capsule: Radius = 7.576746  Length = 16.468609  Center = X=7.455 Y=0.543 Z=9.315
+Ok. App. is Box: AxisX = X=114.000 Y=0.000 Z=0.000  AxisY = X=0.000 Y=46.000 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=37.200  Center = X=0.000 Y=-6.327 Z=-8.195
+App. is Capsule: Radius = 20.602916  Length = 168.476522  Center = X=-0.000 Y=-0.000 Z=95.712
+Ok. App. is Box: AxisX = X=6.900 Y=0.000 Z=0.000  AxisY = X=0.000 Y=136.500 Z=0.000  AxisZ = X=0.000 Y=0.000 Z=190.000  Center = X=-189.158 Y=62.468 Z=314.171

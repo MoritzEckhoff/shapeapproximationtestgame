@@ -1,6 +1,10 @@
 # Visual Studio 2015 user specific files
 .vs/
 
+# Video files
+*.avi
+*.mp4
+
 # Rider
 .idea/
 

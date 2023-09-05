@@ -41,6 +41,8 @@ protected:
 	void UpdatePtrArray();
 	void PrintDynMeshProperties(const UE::Geometry::FDynamicMesh3& DynMesh, FString OutputStr = FString(""));
 	void PrintDynMeshProperties(const TArray<UE::Geometry::FDynamicMesh3>& DynMeshArr);
+	void PrintApproximatedSizes(const int32& index, const UE::Geometry::EDetectedSimpleShapeType Type, FString OutputStr = FString(""));
+
 
 	AStaticMeshActor* MakeStaticMeshActorFromDynamicMesh(const FName Name, const UE::Geometry::FDynamicMesh3* DynMesh, const FTransform& RelativeTrans);
 	void DrawBoxes();

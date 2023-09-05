@@ -453,7 +453,7 @@ void FMeshSimpleShapeApproximation::Generate_MinCostApproximation(FSimpleShapeSe
 		Cost[0] = (Volumes[0] < TNumericLimits<double>::Max()) ? std::abs(Volumes[0] - OriginalVolume) * 2.0f : TNumericLimits<double>::Max();
 		Cost[1] = (Volumes[1] < TNumericLimits<double>::Max()) ? std::abs(Volumes[1] - OriginalVolume) * 0.9f : TNumericLimits<double>::Max();
 		Cost[2] = (Volumes[2] < TNumericLimits<double>::Max()) ? std::abs(Volumes[2] - OriginalVolume) * 1.0f : TNumericLimits<double>::Max();
-		Cost[3] = (Volumes[3] < TNumericLimits<double>::Max()) ? std::abs(Volumes[3] - OriginalVolume) * 3.0f : TNumericLimits<double>::Max();
+		Cost[3] = (Volumes[3] < TNumericLimits<double>::Max()) ? std::abs(Volumes[3] - OriginalVolume) * 2.0f : TNumericLimits<double>::Max();
 
 		int32 MinCostIndex = 0;
 		for (int32 k = 1; k < 4; ++k)
